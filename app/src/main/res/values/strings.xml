@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">SafeTravel</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="login">Inicio de Sesión</string>
+    <string name="loginP">Por favor, inicie sesión para continuar</string>
+    <string name="email">Ingrese su correo</string>
+    <string name="password">Ingrese su contraseña</string>
+    <string name="log">Comenzar</string>
+    <string name="L_account">No tienes una cuenta?</string>
+    <string name="register">Registrarse</string>
 </resources>
