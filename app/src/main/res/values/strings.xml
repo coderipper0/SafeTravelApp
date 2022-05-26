@@ -8,4 +8,11 @@
     <string name="log">Comenzar</string>
     <string name="L_account">No tienes una cuenta?</string>
     <string name="register">Registrarse</string>
+    <string name="remember">Recordar</string>
+    <string name="name">Nombre(s)</string>
+    <string name="lastname">Apellido</string>
+    <string name="cofpass">Ingrese nuevamente su contraseña</string>
+    <string name="date">Fecha de nacimiento</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
