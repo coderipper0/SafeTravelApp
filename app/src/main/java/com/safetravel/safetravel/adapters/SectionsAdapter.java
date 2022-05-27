@@ -6,6 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.safetravel.safetravel.DetailsFragment;
 import com.safetravel.safetravel.ForumFragment;
+import com.safetravel.safetravel.GraphicsFragment;
 
 public class SectionsAdapter extends FragmentStateAdapter {
     public SectionsAdapter(Fragment fragment) {
@@ -21,7 +22,7 @@ public class SectionsAdapter extends FragmentStateAdapter {
         } else if(position == 1) {
             fragment = new ForumFragment();
         } else {
-            fragment = new DetailsFragment();
+            fragment = new GraphicsFragment();
         }
         return fragment;
     }
