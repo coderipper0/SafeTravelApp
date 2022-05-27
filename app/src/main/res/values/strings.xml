@@ -12,7 +12,7 @@
     <string name="name">Nombre(s)</string>
     <string name="lastname">Apellido</string>
     <string name="cofpass">Ingrese nuevamente su contraseña</string>
-    <string name="date">Fecha de nacimiento</string>
+    <string name="welcome">Bienvenido a Safe Travel</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
