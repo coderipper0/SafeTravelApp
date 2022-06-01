@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/options1"
+            android:title="Opciones principales">
+            <menu>
+                <item
+                    android:id="@+id/home"
+                    android:icon="@drawable/ic_home"
+                    android:title="Home"
+                    android:checked="true" />
+                <item
+                    android:id="@+id/sectors"
+                    android:icon="@drawable/ic_sectors"
+                    android:title="Sectores" />
+                <item
+                    android:id="@+id/account"
+                    android:icon="@drawable/ic_account"
+                    android:title="Cuenta" />
+                <item
+                    android:id="@+id/help"
+                    android:icon="@drawable/ic_help"
+                    android:title="Ayuda" />
+            </menu>
+        </item>
+    </group>
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/options2"
+            android:title="Otras opciones">
+            <menu>
+                <item
+                    android:id="@+id/settings"
+                    android:icon="@drawable/ic_settings"
+                    android:title="Ajustes" />
+                <item
+                    android:id="@+id/logout"
+                    android:icon="@drawable/ic_logout"
+                    android:title="Cerrar sesión"/>
+            </menu>
+        </item>
+    </group>
+</menu>

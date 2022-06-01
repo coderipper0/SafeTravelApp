@@ -62,12 +62,12 @@ public class AyudaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_ayuda, container, false);
-        setContentView(R.layout.fragment_ayuda);
+        /*setContentView(R.layout.fragment_ayuda);
         View vista = findViewById(R.id.txtProblema);
         //Instancias
         Button enviar = vista.findViewById(R.id.btnEnviar);
         ayuda = vista.findViewById(R.id.txtProblema);
         //Se define el escucha para el botón
-        enviar.setOnClickListener(view -> Toast.makeText(getApplicationContext(), "Datos enviados de "+ ayuda.getText().toString(), Toast.LENGTH_SHORT).show());
+        enviar.setOnClickListener(view -> Toast.makeText(getApplicationContext(), "Datos enviados de "+ ayuda.getText().toString(), Toast.LENGTH_SHORT).show());*/
     }
 }

@@ -67,7 +67,7 @@ public class cuentaFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_cuenta, container, false);
         //extraemos el drawable en un bitmap
-        Drawable originalDrawable = getResources().getDrawable(R.drawable.avatar);
+        /*Drawable originalDrawable = getResources().getDrawable(R.drawable.avatar);
         Bitmap originalBitmap = ((BitmapDrawable) originalDrawable).getBitmap();
 
         //creamos el drawable redondeado
@@ -79,7 +79,7 @@ public class cuentaFragment extends Fragment {
 
         ImageView imageView = (ImageView) findViewById(R.id.imgAvatar);
 
-        imageView.setImageDrawable(roundedDrawable);
+        imageView.setImageDrawable(roundedDrawable);*/
     }
     public void actionbutton(){
 
