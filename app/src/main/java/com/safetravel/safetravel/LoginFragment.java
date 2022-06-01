@@ -1,5 +1,6 @@
 package com.safetravel.safetravel;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -70,12 +71,21 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Button btnLogin = view.findViewById(R.id.btnLogin);
+        Button btnRegister = view.findViewById(R.id.btnRegister);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-                ft.replace(R.id.fragments_container, new HomeFragment());
+                ft.replace(R.id.fragments_login_container, new RegisterFragment());
                 ft.commit();
             }
         });

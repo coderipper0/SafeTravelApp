@@ -7,6 +7,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,14 +35,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                Fragment fragment;
+                Fragment fragment = null;
                 switch (item.getItemId()) {
-                    case R.id.home:
-                        fragment = new HomeFragment();
-                        break;
                     case R.id.sectors:
                         fragment = new SectorFragment();
                         break;
@@ -51,18 +51,20 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new AyudaFragment();
                         break;
                     case R.id.settings:
-                        fragment = new HomeFragment();
+                        ///fragment = new HomeFragment();
                         break;
                     case R.id.logout:
-                        fragment = new LoginFragment();
+                        finish();
                         break;
                     default:
                         fragment = new HomeFragment();
                         break;
                 }
 
-                ft.replace(R.id.fragments_container, fragment);
-                ft.commit();
+                if(fragment != null) {
+                    ft.replace(R.id.fragments_container, fragment);
+                    ft.commit();
+                }
 
                 item.setChecked(true);
                 drawerLayout.close();
@@ -71,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragments_container, new LoginFragment());
+        ft.replace(R.id.fragments_container, new HomeFragment());
         ft.commit();
     }
 }
