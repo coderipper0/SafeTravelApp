@@ -105,9 +105,7 @@ public class RegisterFragment extends Fragment {
     }
 
     public void register(){
-        if(contador < capacidad & contador > 0){
-            for (int i=0; i<contador; i++){
-                if(!email.getText().toString().equals(arreglo[i].getEmail())){
+        if(contador < capacidad){
                     if(confirmpass.getText().toString().equals(pass.getText().toString())){
                         arreglo[contador].setEmail(email.getText().toString());
                         arreglo[contador].setName(name.getText().toString());
@@ -119,10 +117,6 @@ public class RegisterFragment extends Fragment {
                     }else{
                         Toast.makeText(getContext(),"Contraseña diferente", Toast.LENGTH_SHORT).show();
                     }
-                }else{
-                    Toast.makeText(getContext(), "El correo Ingresado ya existe", Toast.LENGTH_SHORT).show();
-                }
-            }
         }else {
             Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
         }

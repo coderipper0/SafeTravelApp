@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +21,7 @@ import android.widget.Button;
  */
 public class LoginFragment extends Fragment {
 
+    private EditText email, pass;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -73,6 +75,9 @@ public class LoginFragment extends Fragment {
         Button btnLogin = view.findViewById(R.id.btnLogin);
         Button btnRegister = view.findViewById(R.id.btnRegister);
 
+        email = view.findViewById(R.id.edtxtEmailLogin);
+        pass = view.findViewById(R.id.edtxtPassLogin);
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,5 +94,10 @@ public class LoginFragment extends Fragment {
                 ft.commit();
             }
         });
+    }
+
+    public void ingresar(){
+
+
     }
 }
