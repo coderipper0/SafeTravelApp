@@ -9,6 +9,7 @@
     <string name="L_account">No tienes una cuenta?</string>
     <string name="register">Registrarse</string>
     <string name="remember">Recordar</string>
+    <string name="mail">Correo</string>
     <string name="name">Nombre(s)</string>
     <string name="lastname">Apellido</string>
     <string name="cofpass">Ingrese nuevamente su contraseña</string>

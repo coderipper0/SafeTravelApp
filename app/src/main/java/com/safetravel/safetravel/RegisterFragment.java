@@ -12,6 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +24,12 @@ import android.widget.Button;
  * create an instance of this fragment.
  */
 public class RegisterFragment extends Fragment {
+
+    //Instancia de los componentes
+    private EditText email, name, lastname, pass, confirmpass,  date;
+    int capacidad = 10;
+    User[] arreglo = new User[capacidad];
+    int contador;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,6 +69,7 @@ public class RegisterFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -71,14 +83,48 @@ public class RegisterFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Button btnRegistrar = view.findViewById(R.id.btnRegistrar);
+        email = view.findViewById(R.id.edtEmailR);
+        name = view.findViewById(R.id.edtNameR);
+        lastname = view.findViewById(R.id.edtLasNameR);
+        pass = view.findViewById(R.id.edtConfPassR);
+        confirmpass = view.findViewById(R.id.edtConfPassR);
+
+        for (int i=0; i<capacidad; i++){
+            arreglo[i] = new User();
+        }
 
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                register();
                 FragmentTransaction ft = getParentFragmentManager().beginTransaction();
                 ft.replace(R.id.fragments_login_container, new LoginFragment());
                 ft.commit();
             }
         });
+    }
+
+    public void register(){
+        if(contador < capacidad & contador > 0){
+            for (int i=0; i<contador; i++){
+                if(!email.getText().toString().equals(arreglo[i].getEmail())){
+                    if(confirmpass.getText().toString().equals(pass.getText().toString())){
+                        arreglo[contador].setEmail(email.getText().toString());
+                        arreglo[contador].setName(name.getText().toString());
+                        arreglo[contador].setLastname(lastname.getText().toString());
+                        arreglo[contador].setPass(pass.getText().toString());
+                        contador++;
+
+                        Toast.makeText(getContext(), "Registrado", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(getContext(),"Contraseña diferente", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(getContext(), "El correo Ingresado ya existe", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }else {
+            Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
+        }
     }
 }
