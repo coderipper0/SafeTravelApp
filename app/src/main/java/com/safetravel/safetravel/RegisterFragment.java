@@ -16,6 +16,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,7 +28,8 @@ import java.util.List;
 public class RegisterFragment extends Fragment {
 
     //Instancia de los componentes
-    private EditText email, name, lastname, pass, confirmpass,  date;
+    private EditText email, name, lastname, pass, confirmpass;
+    private Date date;
     int capacidad = 10;
     User[] arreglo = new User[capacidad];
     int contador;
@@ -89,7 +92,9 @@ public class RegisterFragment extends Fragment {
         pass = view.findViewById(R.id.edtConfPassR);
         confirmpass = view.findViewById(R.id.edtConfPassR);
 
+
         for (int i=0; i<capacidad; i++){
+
             arreglo[i] = new User();
         }
 
@@ -105,20 +110,35 @@ public class RegisterFragment extends Fragment {
     }
 
     public void register(){
-        if(contador < capacidad){
-                    if(confirmpass.getText().toString().equals(pass.getText().toString())){
-                        arreglo[contador].setEmail(email.getText().toString());
-                        arreglo[contador].setName(name.getText().toString());
-                        arreglo[contador].setLastname(lastname.getText().toString());
-                        arreglo[contador].setPass(pass.getText().toString());
-                        contador++;
+        boolean encontrado = false;
 
-                        Toast.makeText(getContext(), "Registrado", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(getContext(),"Contraseña diferente", Toast.LENGTH_SHORT).show();
-                    }
-        }else {
-            Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
+        if(contador <= capacidad){
+            for (int i=0; i<contador; i++){
+                Toast.makeText(getContext(), "entró"+i, Toast.LENGTH_SHORT).show();
+                if (email.getText().toString().equals(arreglo[i].getEmail())){
+                    Toast.makeText(getContext(), "Ya existe el correo", Toast.LENGTH_SHORT).show();
+                    encontrado = true;
+                    break;
+                }
+            }
+            if(!encontrado){
+                if (pass.getText().toString().equals(confirmpass.getText().toString())){
+
+                    arreglo[contador].setEmail(email.getText().toString());
+                    arreglo[contador].setName(name.getText().toString());
+                    arreglo[contador].setLastname(lastname.getText().toString());
+                    arreglo[contador].setPass(pass.getText().toString());
+                    contador++;
+
+                    Toast.makeText(getContext(), "Registrado", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(), "La contraseña no coincide", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        }else{
+            Toast.makeText(getContext(), "Max", Toast.LENGTH_SHORT).show();
         }
     }
+
 }
