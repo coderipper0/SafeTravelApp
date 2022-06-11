@@ -10,14 +10,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/txtbuscar"
+        <SearchView
+            android:id="@+id/txtFind"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_search"
-            android:ems="10"
-            android:hint="@string/Search"
-            android:inputType="textPersonName"
-            android:textColorHint="#757575" />
+            android:iconifiedByDefault="false"
+            android:queryHint="Buscar" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/FindItems"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 </FrameLayout>

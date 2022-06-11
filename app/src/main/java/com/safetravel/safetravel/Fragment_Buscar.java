@@ -3,17 +3,19 @@ package com.safetravel.safetravel;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Fragment_Buscar#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_Buscar extends Fragment {
+public class Fragment_Buscar extends Fragment implements SearchView.OnQueryTextListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -46,6 +48,9 @@ public class Fragment_Buscar extends Fragment {
         return fragment;
     }
 
+    SearchView txtBuscar;
+    RecyclerView FindItems;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +58,11 @@ public class Fragment_Buscar extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        txtBuscar = txtBuscar.findViewById(R.id.txtFind);
+        FindItems = FindItems.findViewById(R.id.FindItems);
+
+        txtBuscar.setOnQueryTextListener(this);
     }
 
     @Override
@@ -60,5 +70,15 @@ public class Fragment_Buscar extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment__buscar, container, false);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        return false;
     }
 }
