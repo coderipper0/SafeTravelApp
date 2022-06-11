@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -16,11 +19,13 @@ import android.widget.Toast;
  * create an instance of this fragment.
  */
 public class AyudaFragment extends Fragment {
+    private TextView correo;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -55,19 +60,22 @@ public class AyudaFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ayuda, container, false);
-        /*setContentView(R.layout.fragment_ayuda);
-        View vista = findViewById(R.id.txtProblema);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View vista = inflater.inflate(R.layout.fragment_ayuda, container, false);
+        //Por medio de la instacia vista se accede al botón del fragment
+        //tal como se realiza con el Activity
         //Instancias
         Button enviar = vista.findViewById(R.id.btnEnviar);
-        ayuda = vista.findViewById(R.id.txtProblema);
+        correo = vista.findViewById(R.id.txtTitulo);
         //Se define el escucha para el botón
-        enviar.setOnClickListener(view -> Toast.makeText(getApplicationContext(), "Datos enviados de "+ ayuda.getText().toString(), Toast.LENGTH_SHORT).show());*/
+        enviar.setOnClickListener(view -> Toast.makeText(getContext(), "Datos enviados de "+ correo.getText().toString(), Toast.LENGTH_SHORT).show());
+        return vista;
+
     }
+
 }
