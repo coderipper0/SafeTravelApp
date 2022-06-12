@@ -102,6 +102,9 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 register();
+                /*Bundle bundle = new Bundle();
+                bundle.putStringArray("arreglo",arreglo);
+                getParentFragmentManager().setFragmentResult("key",); */
                 FragmentTransaction ft = getParentFragmentManager().beginTransaction();
                 ft.replace(R.id.fragments_login_container, new LoginFragment());
                 ft.commit();
