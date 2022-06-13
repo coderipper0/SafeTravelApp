@@ -1,5 +1,8 @@
 package com.safetravel.safetravel;
 
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -68,6 +71,7 @@ public class SectorFragment extends BottomSheetDialogFragment {
         super.onViewCreated(view, savedInstanceState);
         MaterialCardView sectorCard = view.findViewById(R.id.sector_card);
         BottomSheetBehavior<MaterialCardView> sheetBehavior = BottomSheetBehavior.from(sectorCard);
+        sheetBehavior.setSaveFlags(BottomSheetBehavior.SAVE_ALL);
         sheetBehavior.addBottomSheetCallback(new SectorSheetCallback());
 
         SectionsAdapter adapter = new SectionsAdapter(this);
@@ -78,9 +82,11 @@ public class SectorFragment extends BottomSheetDialogFragment {
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> tab.setText("OBJECT " + (position + 1))
         ).attach();
+
+        sheetBehavior.setState(STATE_COLLAPSED);
     }
 
-    class SectorSheetCallback extends BottomSheetBehavior.BottomSheetCallback {
+    static class SectorSheetCallback extends BottomSheetBehavior.BottomSheetCallback {
         @Override
         public void onStateChanged(@NonNull View bottomSheet, int newState) {
 
