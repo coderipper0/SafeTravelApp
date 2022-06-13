@@ -11,6 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.safetravel.safetravel.adapters.SectionsAdapter;
@@ -20,16 +24,10 @@ import com.safetravel.safetravel.adapters.SectionsAdapter;
  * Use the {@link SectorFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SectorFragment extends Fragment {
+public class SectorFragment extends BottomSheetDialogFragment {
+    private static final String SECTOR_ID = "sectorId";
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private int sectorId;
 
     public SectorFragment() {
         // Required empty public constructor
@@ -39,16 +37,13 @@ public class SectorFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param sectorId Sector ID.
      * @return A new instance of fragment SectorFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static SectorFragment newInstance(String param1, String param2) {
+    public static SectorFragment newInstance(int sectorId) {
         SectorFragment fragment = new SectorFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(SECTOR_ID, sectorId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -57,8 +52,7 @@ public class SectorFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            sectorId = getArguments().getInt(SECTOR_ID);
         }
     }
 
@@ -72,6 +66,10 @@ public class SectorFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        MaterialCardView sectorCard = view.findViewById(R.id.sector_card);
+        BottomSheetBehavior<MaterialCardView> sheetBehavior = BottomSheetBehavior.from(sectorCard);
+        sheetBehavior.addBottomSheetCallback(new SectorSheetCallback());
+
         SectionsAdapter adapter = new SectionsAdapter(this);
         ViewPager2 viewPager = view.findViewById(R.id.sections_slider);
         viewPager.setAdapter(adapter);
@@ -80,5 +78,17 @@ public class SectorFragment extends Fragment {
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> tab.setText("OBJECT " + (position + 1))
         ).attach();
+    }
+
+    class SectorSheetCallback extends BottomSheetBehavior.BottomSheetCallback {
+        @Override
+        public void onStateChanged(@NonNull View bottomSheet, int newState) {
+
+        }
+
+        @Override
+        public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+        }
     }
 }

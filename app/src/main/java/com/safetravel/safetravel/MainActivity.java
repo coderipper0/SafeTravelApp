@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 Fragment fragment = null;
                 switch (item.getItemId()) {
-                    case R.id.sectors:
-                        fragment = new SectorFragment();
+                    case R.id.map:
+                        fragment = new MapFragment();
                         break;
                     case R.id.account:
                         fragment = new cuentaFragment();

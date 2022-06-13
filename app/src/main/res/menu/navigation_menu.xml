@@ -13,9 +13,9 @@
                     android:title="Home"
                     android:checked="true" />
                 <item
-                    android:id="@+id/sectors"
-                    android:icon="@drawable/ic_sectors"
-                    android:title="Sectores" />
+                    android:id="@+id/map"
+                    android:icon="@drawable/ic_map"
+                    android:title="Mapa" />
                 <item
                     android:id="@+id/account"
                     android:icon="@drawable/ic_account"
