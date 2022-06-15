@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment_Reg_Sectores">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtRdS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registro de Sector"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            android:translationX="60dp"
+            android:translationY="10dp" />
+
+        <EditText
+            android:id="@+id/txtname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nombre"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:translationY="25dp" />
+
+        <EditText
+            android:id="@+id/txtcorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Correo"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:translationY="50dp" />
+
+        <EditText
+            android:id="@+id/txtNameSector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nombre de Colonia"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:translationY="75dp" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Motivos"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:translationY="100dp" />
+
+        <Switch
+            android:id="@+id/SwOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="¿Deseas continuar?"
+            android:translationY="125dp"
+            android:translationZ="25dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Enviar"
+            android:translationX="130dp"
+            android:translationY="150dp" />
+    </LinearLayout>
+</FrameLayout>
