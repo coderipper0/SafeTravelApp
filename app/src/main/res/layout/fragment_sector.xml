@@ -10,14 +10,18 @@
         android:id="@+id/sector_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="20dp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="0dp"
         app:cardElevation="8dp"
         app:behavior_draggable="true"
+        app:behavior_hideable="true"
+        app:behavior_fitToContents="false"
+        app:behavior_skipCollapsed="false"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
         app:behavior_peekHeight="100dp"
         style="?attr/bottomSheetStyle">
 
-        <androidx.core.widget.NestedScrollView
+        <!--<androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true">
@@ -54,6 +58,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>-->
     </com.google.android.material.card.MaterialCardView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

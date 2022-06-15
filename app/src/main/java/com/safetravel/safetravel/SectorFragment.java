@@ -1,7 +1,11 @@
 package com.safetravel.safetravel;
 
 import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_DRAGGING;
 import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HALF_EXPANDED;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HIDDEN;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_SETTLING;
 
 import android.os.Bundle;
 
@@ -13,6 +17,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback;
@@ -31,6 +36,7 @@ public class SectorFragment extends BottomSheetDialogFragment {
     private static final String SECTOR_ID = "sectorId";
 
     private int sectorId;
+    BottomSheetBehavior<MaterialCardView> sheetBehavior;
 
     public SectorFragment() {
         // Required empty public constructor
@@ -62,7 +68,6 @@ public class SectorFragment extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_sector, container, false);
     }
 
@@ -70,26 +75,42 @@ public class SectorFragment extends BottomSheetDialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         MaterialCardView sectorCard = view.findViewById(R.id.sector_card);
-        BottomSheetBehavior<MaterialCardView> sheetBehavior = BottomSheetBehavior.from(sectorCard);
-        sheetBehavior.setSaveFlags(BottomSheetBehavior.SAVE_ALL);
+        sheetBehavior = BottomSheetBehavior.from(sectorCard);
         sheetBehavior.addBottomSheetCallback(new SectorSheetCallback());
+        sheetBehavior.setPeekHeight(100);
+        sheetBehavior.setHideable(true);
+        sheetBehavior.setFitToContents(false);
+        sheetBehavior.setSkipCollapsed(false);
 
-        SectionsAdapter adapter = new SectionsAdapter(this);
+        //sheetBehavior.setState(STATE_EXPANDED);
+
+        /*SectionsAdapter adapter = new SectionsAdapter(this);
         ViewPager2 viewPager = view.findViewById(R.id.sections_slider);
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = view.findViewById(R.id.sections_tab);
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> tab.setText("OBJECT " + (position + 1))
-        ).attach();
-
-        sheetBehavior.setState(STATE_COLLAPSED);
+        ).attach();*/
     }
 
     static class SectorSheetCallback extends BottomSheetBehavior.BottomSheetCallback {
         @Override
         public void onStateChanged(@NonNull View bottomSheet, int newState) {
-
+            /*switch (newState) {
+                case STATE_DRAGGING:
+                    break;
+                case STATE_SETTLING:
+                    break;
+                case STATE_EXPANDED:
+                    break;
+                case STATE_COLLAPSED:
+                    break;
+                case STATE_HIDDEN:
+                    break;
+                case STATE_HALF_EXPANDED:
+                    break;
+            }*/
         }
 
         @Override
