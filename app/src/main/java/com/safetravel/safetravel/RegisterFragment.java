@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -29,10 +30,15 @@ public class RegisterFragment extends Fragment {
 
     //Instancia de los componentes
     private EditText email, name, lastname, pass, confirmpass;
-    private Date date;
+    private Date dat;
     int capacidad = 10;
     User[] arreglo = new User[capacidad];
     int contador;
+
+    ArrayList<User> userlist = new ArrayList<>();
+    ArrayList<String> allusrs = new ArrayList<>();
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -92,7 +98,6 @@ public class RegisterFragment extends Fragment {
         pass = view.findViewById(R.id.edtConfPassR);
         confirmpass = view.findViewById(R.id.edtConfPassR);
 
-
         for (int i=0; i<capacidad; i++){
 
             arreglo[i] = new User();
@@ -101,7 +106,7 @@ public class RegisterFragment extends Fragment {
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                register();
+                //register();
                 /*Bundle bundle = new Bundle();
                 bundle.putStringArray("arreglo",arreglo);
                 getParentFragmentManager().setFragmentResult("key",); */
@@ -112,6 +117,11 @@ public class RegisterFragment extends Fragment {
         });
     }
 
+    public void guarda(){
+        userlist.add(new User(email.getText().toString(), name.getText().toString(), lastname.getText().toString(), pass.getText().toString()));
+        Toast.makeText(getContext(), "Agregado a la lista", Toast.LENGTH_SHORT).show();
+
+    }
     public void register(){
         boolean encontrado = false;
 

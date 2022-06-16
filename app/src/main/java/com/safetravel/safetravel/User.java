@@ -2,21 +2,19 @@ package com.safetravel.safetravel;
 
 import java.io.Serializable;
 
-public class User implements Serializable{
+public class User implements Serializable {
     private String email;
     private String name;
     private String lastname;
     private String pass;
     private String date;
-    private boolean register;
 
-    public User(String email, String name, String lastname, String pass, String date, boolean register) {
+    public User(String email, String name, String lastname, String pass) {
         this.email = email;
         this.name = name;
         this.lastname = lastname;
         this.pass = pass;
-        this.date = date;
-        this.register = register;
+        //this.date = date;
     }
 
     public User() {
@@ -24,8 +22,7 @@ public class User implements Serializable{
         this.name = "none";
         this.lastname = "none";
         this.pass = "none";
-        this.date = "none";
-        this.register = false;
+        //this.date = "none";
     }
 
     public String getEmail() {
@@ -60,19 +57,12 @@ public class User implements Serializable{
         this.pass = pass;
     }
 
-    public String getDate() {
+    /*public String getDate() {
         return date;
     }
 
     public void setDate(String date) {
         this.date = date;
     }
-
-    public boolean isRegister() {
-        return register;
-    }
-
-    public void setRegister(boolean register) {
-        this.register = register;
-    }
+    */
 }
