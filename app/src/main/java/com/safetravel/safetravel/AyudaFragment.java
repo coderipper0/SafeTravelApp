@@ -2,6 +2,8 @@ package com.safetravel.safetravel;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -62,7 +64,33 @@ public class AyudaFragment extends Fragment {
         }
 
     }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+        super.onViewCreated(view, savedInstanceState);
+
+        Button btnEnviar = view.findViewById(R.id.btnEnviar);
+        EditText titulo = view.findViewById((R.id.txtTitulo));
+        EditText comentarios = view.findViewById((R.id.txt_comentarios));
+        EditText telefono = view.findViewById((R.id.edittxt_Telefono));
+
+
+
+        btnEnviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnEnviar.setOnClickListener(view -> Toast.makeText(getContext(), "Datos enviados de "+ correo.getText().toString(), Toast.LENGTH_SHORT).show());
+                titulo.setText("");
+                comentarios.setText("");
+                telefono.setText("");
+            }
+
+        });
+
+
+
+
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 

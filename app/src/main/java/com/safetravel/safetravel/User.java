@@ -13,7 +13,7 @@ public class User {
         this.name = name;
         this.lastname = lastname;
         this.pass = pass;
-        //this.date = date;
+        this.date = date;
     }
 
     public User() {
@@ -56,12 +56,12 @@ public class User {
         this.pass = pass;
     }
 
-    /*public String getDate() {
+    public String getDate() {
         return date;
     }
 
     public void setDate(String date) {
         this.date = date;
     }
-    */
+
 }
