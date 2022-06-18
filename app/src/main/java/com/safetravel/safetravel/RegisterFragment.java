@@ -35,6 +35,7 @@ public class RegisterFragment extends Fragment {
     User[] arreglo = new User[capacidad];
     int contador;
 
+
     ArrayList<User> userlist = new ArrayList<>();
     ArrayList<String> allusrs = new ArrayList<>();
 

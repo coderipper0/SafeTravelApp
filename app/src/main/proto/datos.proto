@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_package = "com.safetravel.safetravel";
+option java_multiple_files = true;
+
+message usuario{
+  string email = 1;
+  string nombre = 2;
+  string apellido = 3;
+  string contra = 4;
+  int32 edad =5;
+}
