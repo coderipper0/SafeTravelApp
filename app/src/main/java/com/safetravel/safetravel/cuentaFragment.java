@@ -90,16 +90,22 @@ public class cuentaFragment extends Fragment {
         Button btnActualizar = view.findViewById(R.id.btnCuenta);
         TextView datos = view.findViewById(R.id.txtDatos);
 
-         datos.setText("Información registrada:\n" +
-               "Nombre: " + usuario.getName() + "\n" +
-              "Apellidos: " + usuario.getLastname() + "\n" +
-                "Fecha nacimiento: " + usuario.getDate() + "\n" +
-                "Correo: " + usuario.getEmail() + "\n");
+        datos.setText("Nombre: Christian   \n" +
+                "Apellidos: Lopez \n" +
+                "Fecha Namcimiento: 17/01/00 \n" +
+                "Correo: correocontactoml@live.com" );
+        // datos.setText("Información registrada:\n" +
+          //     "Nombre: " + usuario.getName() + "\n" +
+            //  "Apellidos: " + usuario.getLastname() + "\n" +
+              //  "Fecha nacimiento: " + usuario.getDate() + "\n" +
+                //"Correo: " + usuario.getEmail() + "\n");
 
         btnActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+                ft.replace(R.id.fragments_login_container, new Fragment_Historial());
+                ft.commit();
             }
         });
 

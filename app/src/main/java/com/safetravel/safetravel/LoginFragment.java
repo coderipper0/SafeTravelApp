@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -81,17 +82,24 @@ public class LoginFragment extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(email.getText().toString().equals("chris@hotmail.com") && pass.getText().toString().equals("123")){
                 Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
+                startActivity(intent);}
+                else{
+
+                }
             }
         });
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 FragmentTransaction ft = getParentFragmentManager().beginTransaction();
                 ft.replace(R.id.fragments_login_container, new RegisterFragment());
                 ft.commit();
+
+
             }
         });
     }
