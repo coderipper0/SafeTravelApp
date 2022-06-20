@@ -4,31 +4,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.safetravel.safetravel.DetailsFragment;
-import com.safetravel.safetravel.ForumFragment;
-import com.safetravel.safetravel.GraphicsFragment;
-
 public class SectionsAdapter extends FragmentStateAdapter {
-    public SectionsAdapter(Fragment fragment) {
+    Fragment[] fragments;
+    public SectionsAdapter(Fragment fragment, Fragment[] fragments) {
         super(fragment);
+        this.fragments = fragments;
     }
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        Fragment fragment;
-        if(position == 0) {
-            fragment = new DetailsFragment();
-        } else if(position == 1) {
-            fragment = new ForumFragment();
-        } else {
-            fragment = new GraphicsFragment();
-        }
-        return fragment;
+        return fragments[position];
     }
 
     @Override
     public int getItemCount() {
-        return 100;
+        return fragments.length;
     }
 }

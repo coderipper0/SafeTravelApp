@@ -8,30 +8,13 @@
 
     <org.osmdroid.views.MapView
         android:id="@+id/map_view"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <FrameLayout
-        android:id="@+id/sector_card"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/sector_container"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:background="@color/white"
-        app:behavior_draggable="true"
-        app:behavior_hideable="true"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-        app:behavior_peekHeight="100dp"
-        style="?attr/bottomSheetStyle">
-
-
-        <!-- Bottom sheet contents. -->
-        <TextView
-            android:id="@+id/txt1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam placerat elementum risus nec feugiat. Nullam at mi ac risus posuere semper in quis orci. Cras elementum faucibus ligula sit amet venenatis. Aliquam euismod nec eros eget laoreet. Cras quis molestie nibh. Integer id imperdiet lorem. Cras auctor, elit ut sodales condimentum, justo ligula volutpat libero, ac aliquet enim turpis id ipsum. Integer euismod laoreet urna, sit amet hendrerit diam venenatis quis. Suspendisse potenti. Phasellus fermentum, ligula vitae porta commodo, eros lectus volutpat lorem, eget sollicitudin massa nibh laoreet magna. Mauris dictum varius eros quis eleifend. Vestibulum cursus accumsan bibendum. Aenean interdum cursus augue, sed commodo tortor porta vitae. Etiam id neque feugiat, aliquet felis eget, posuere turpis. Nulla eleifend nibh eu sapien accumsan facilisis.
-Proin eleifend dui vel est luctus iaculis. Quisque ornare iaculis tempor. Donec vel fermentum magna. Maecenas lacinia turpis lacus, non elementum elit porta quis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam vestibulum augue sit amet mauris gravida tristique. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur semper non turpis vitae ornare. Aenean id vehicula urna. Vivamus vel est at velit volutpat dictum tincidunt eu enim. Morbi sapien urna, hendrerit pharetra urna rutrum, volutpat dignissim felis. Donec nisl sem, cursus id tempus ut, pharetra non lorem. Quisque tristique velit vitae molestie vehicula." />
-
-    </FrameLayout>
+        android:layout_height="match_parent"
+        android:layout_gravity="end|bottom"
+        tools:layout="@layout/fragment_sector" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

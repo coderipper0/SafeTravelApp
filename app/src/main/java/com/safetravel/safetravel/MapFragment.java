@@ -1,37 +1,27 @@
 package com.safetravel.safetravel;
 
-import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED;
-import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HIDDEN;
-
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.card.MaterialCardView;
+import com.safetravel.safetravel.models.Details;
+import com.safetravel.safetravel.models.Sector;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsController;
-import org.osmdroid.views.MapController;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
 import org.osmdroid.views.overlay.OverlayItem;
-import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
-import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.util.ArrayList;
 
@@ -79,23 +69,35 @@ public class MapFragment extends Fragment {
         mapView.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.ALWAYS);
 
         IMapController mapController = mapView.getController();
-        mapController.setZoom(15.0);
+        mapController.setZoom(14.0);
         mapController.setCenter(gdl);
         mapView.setMultiTouchControls(true);
 
         ArrayList<OverlayItem> marks = new ArrayList<>();
-        OverlayItem mark = new OverlayItem("Origin", "Mark", new GeoPoint(20.66682, -103.39182));
-        Drawable icon = mark.getMarker(0);
-        marks.add(mark);
-        View sectorCard = view.findViewById(R.id.sector_card);
-        BottomSheetBehavior<View> sheetBehavior = BottomSheetBehavior.from(sectorCard);
-        //sheetBehavior.setState(STATE_COLLAPSED);
+        MainActivity mainActivity = (MainActivity) requireActivity();
+        for (Sector sector : mainActivity.sectors) {
+            String extra = "";
+            for (Details detail : mainActivity.details) {
+                if(detail.getId() == sector.getDetailsId())
+                    extra = detail.getDetails();
+            }
+            if (extra.length() > 20) {
+                extra = extra.substring(0, 19);
+                extra += "...";
+            }
+            OverlayItem mark = new OverlayItem(sector.getName(), extra, new GeoPoint(sector.getLatitude(), sector.getLongitude()));
+            //Drawable icon = mark.getMarker(0);
+            marks.add(mark);
+        }
 
         ItemizedOverlayWithFocus<OverlayItem> overlay = new ItemizedOverlayWithFocus<>(requireContext(), marks,
                 new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
                     @Override
                     public boolean onItemSingleTapUp(int index, OverlayItem item) {
-                        sheetBehavior.setState(STATE_COLLAPSED);
+                        MainActivity mainActivity = (MainActivity) requireActivity();
+                        long id = mainActivity.sectors.get(index).getId();
+                        SectorFragment sectorFragment = SectorFragment.newInstance(id);
+                        getParentFragmentManager().beginTransaction().add(R.id.sector_container, sectorFragment).commit();
                         return true;
                     }
 
@@ -108,7 +110,6 @@ public class MapFragment extends Fragment {
 
         overlay.setFocusItemsOnTap(true);
         mapView.getOverlays().add(overlay);
-
     }
 
     @Override
